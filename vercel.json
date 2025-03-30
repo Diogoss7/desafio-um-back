@@ -1,6 +1,6 @@
 {
     "version": 2,
-      "framework": null,
+    "framework": null,
     "functions": {
         "api/index.php": { "runtime": "vercel-php@0.6.0" }
     },
@@ -8,6 +8,7 @@
         "src": "/(.*)",
         "dest": "/api/index.php"
     }],
+    "outputDirectory": "public",
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
@@ -23,5 +24,13 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
+    },
+    "build": {
+        "env": {
+            "LD_LIBRARY_PATH": "/usr/lib:/usr/lib64:/lib:/lib64"
+        },
+        "commands": [
+            "apt-get update && apt-get install -y libssl1.0.0 libssl-dev"
+        ]
     }
 }

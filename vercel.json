@@ -2,7 +2,7 @@
     "version": 2,
     "framework": null,
     "functions": {
-        "api/index.php": { "runtime": "vercel-php@0.6.0" }
+        "api/index.php": { "runtime": "php@latest" }
     },
     "routes": [{
         "src": "/(.*)",
@@ -29,7 +29,7 @@
         "env": {
             "LD_LIBRARY_PATH": "/usr/lib:/usr/lib64:/lib:/lib64:/usr/lib/x86_64-linux-gnu",
             "COMPOSER_MEMORY_LIMIT": "-1"
-        }
+        }, "cmd": "apt-get update && apt-get install -y openssl libssl-dev && vercel build"
 
     }
 }

@@ -30,7 +30,7 @@ class ClientController extends Controller
             $users = Client::orderBy('created_at', 'desc')->get();
             return response()->json(['clients' => $users]);
         } catch (\Exception $e) {
-            return response()->json(['error' => 'Erro ao obter usuáriosaaaaaaaa'], 500);
+            return response()->json(['error' => 'Erro ao obter usuários'], 500);
         }
     }
 

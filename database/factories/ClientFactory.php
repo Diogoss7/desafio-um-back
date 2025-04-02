@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Client>
  */
-class UserFactory extends Factory
+class ClientFactory extends Factory
 {
     public function definition(): array
     {
@@ -17,8 +17,8 @@ class UserFactory extends Factory
             'time' => $this->faker->time('H:i:s'),
             'salesperson' => $this->faker->name,
             'description' => $this->faker->sentence(10),
-            'amount' => $this->faker->randomFloat(2, 10, 1000),
-            'phone' => $this->faker->phoneNumber,
+            'amount' => bcdiv($this->faker->randomFloat(2, 10, 1000), '1', 2),
+            'phone' => preg_replace('/\D/', '', $this->faker->phoneNumber),
         ];
     }
 }

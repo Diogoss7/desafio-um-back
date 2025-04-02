@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserFormRequest extends FormRequest
+class ClientFormRequest extends FormRequest
 {
     public function authorize()
     {
@@ -16,10 +16,10 @@ class UserFormRequest extends FormRequest
         return [
             'client' => 'required|string|max:255',
             'date' => 'required|date',
-            'time' => 'required',
+            'time' => 'required|date_format:H:i:s',
             'salesperson' => 'required|string|max:255',
             'description' => 'required|string',
-            'amount' => 'required|numeric',
+            'amount' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
             'phone' => 'required|string|max:20'
         ];
     }

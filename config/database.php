@@ -66,6 +66,7 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
+            // 'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -117,34 +118,37 @@ return [
     | such as APC or Memcached. Laravel makes it easy to dig right in.
     |
     */
+'redis' => [
 
-    'redis' => [
+    'client' => env('REDIS_CLIENT', 'phpredis'),
 
-        'client' => env('REDIS_CLIENT', 'phpredis'),
-
-        'options' => [
-            'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-        ],
-
-        'default' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'username' => env('REDIS_USERNAME'),
-            'password' => env('REDIS_PASSWORD') ?: null,
-            'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_DB', '0'),
-        ],
-
-        'cache' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'username' => env('REDIS_USERNAME'),
-            'password' => env('REDIS_PASSWORD') ?: null,
-            'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_CACHE_DB', '1'),
-        ],
-
+    'options' => [
+        // Cluster Redis, pode ser alterado para 'predis' se for o caso
+        'cluster' => env('REDIS_CLUSTER', 'redis'),
+        // Prefixo para evitar conflito de chaves no Redis
+        'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
     ],
+
+    // Conexão padrão do Redis
+    'default' => [
+        'url' => env('REDIS_URL', null), // Use a URL completa se for necessário
+        'host' => env('REDIS_HOST', '127.0.0.1'), // Defina o endereço do servidor Redis
+        'username' => env('REDIS_USERNAME', null), // Usuário do Redis (se aplicável)
+        'password' => env('REDIS_PASSWORD', null), // Senha do Redis
+        'port' => env('REDIS_PORT', '6379'), // Porta do Redis
+        'database' => env('REDIS_DB', '0'), // Banco de dados Redis (o padrão é 0)
+    ],
+
+    // Configuração para o cache do Redis, se necessário
+    'cache' => [
+        'url' => env('REDIS_CACHE_URL', null), // URL para cache Redis
+        'host' => env('REDIS_HOST', '127.0.0.1'), // Endereço do servidor Redis
+        'username' => env('REDIS_USERNAME', null), // Usuário do Redis (se aplicável)
+        'password' => env('REDIS_PASSWORD', null), // Senha do Redis
+        'port' => env('REDIS_PORT', '6379'), // Porta do Redis
+        'database' => env('REDIS_CACHE_DB', '1'), // Banco de dados Redis para cache
+    ],
+
+],
 
 ];

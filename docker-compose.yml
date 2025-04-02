@@ -1,7 +1,7 @@
 services:
   laravel.test:
     build:
-      context: ./docker/8.1
+      context: ./docker/8.2 x
       dockerfile: Dockerfile
     ports:
       - '8000:8000'
@@ -12,20 +12,21 @@ services:
       LARAVEL_SAIL: 1
     volumes:
       - '.:/var/www/html'
+    depends_on:
+      - postgres
     networks:
       - sail
 
-  mysql:
-    image: 'mysql:8.0'
+  postgres:
+    image: 'postgres:15'
     ports:
-      - '3306:3306'
+      - '5432:5432'
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: laravel
-      MYSQL_PASSWORD: laravel
+      POSTGRES_DB: laravel
+      POSTGRES_USER: laravel
+      POSTGRES_PASSWORD: laravel
     volumes:
-      - 'sail-mysql:/var/lib/mysql'
+      - 'sail-postgres:/var/lib/postgresql/data'
     networks:
       - sail
 
@@ -34,5 +35,5 @@ networks:
     driver: bridge
 
 volumes:
-  sail-mysql:
+  sail-postgres:
     driver: local

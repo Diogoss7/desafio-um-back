@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        try {
+            DB::connection()->getPdo();
+            Log::info('Conexão com o banco de dados estabelecida com sucesso.');
+        } catch (\Exception $e) {
+            Log::error('Erro ao conectar ao banco de dados: ' . $e->getMessage());
+        }
     }
 }

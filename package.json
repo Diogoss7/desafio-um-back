@@ -3,7 +3,13 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "sail:clear": "./vendor/bin/sail artisan config:clear && ./vendor/bin/sail artisan cache:clear && ./vendor/bin/sail artisan route:clear && ./vendor/bin/sail artisan view:clear",
+        "sail:restart": "npm run sail:clear && ./vendor/bin/sail down && ./vendor/bin/sail up -d --build"
+    },
+    "dependencies": {
+        "pg": "^8.10.0",
+        "sequelize": "^6.32.1"
     },
     "devDependencies": {
         "axios": "^1.1.2",

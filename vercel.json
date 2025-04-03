@@ -8,6 +8,7 @@
             "dest": "/api/index.php"
         }
     ],
+    "api/index.php": { "runtime": "vercel-php@0.6.0" },
 
     "env": {
         "APP_ENV": "production",

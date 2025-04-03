@@ -6,10 +6,6 @@
         {
             "src": "^/api/(.*)$",
             "dest": "/api/index.php"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/$1"
         }
     ],
     "functions": {

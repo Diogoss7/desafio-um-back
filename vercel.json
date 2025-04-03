@@ -1,14 +1,12 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "api/index.php",
-            "use": "@vercel/php"
-        }
-    ],
+    "framework": null,
+    "functions": {
+        "api/index.php": { "runtime": "vercel-php@0.6.0" }
+    },
     "routes": [
         {
-            "src": "/api/(.*)",
+            "src": "/(.*)",
             "dest": "/api/index.php"
         }
     ],
@@ -16,7 +14,8 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://yourprojectdomain.com",
+        "APP_URL": "https://your.url.from.vercel.app",
+        "APP_KEY": "add API key here from your .env file",
 
         "APP_CONFIG_CACHE": "/tmp/config.php",
         "APP_EVENTS_CACHE": "/tmp/events.php",
@@ -28,11 +27,5 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
-    },
-    "build": {
-        "env": {
-            "LD_LIBRARY_PATH": "/usr/lib:/usr/lib64:/lib:/lib64:/usr/lib/x86_64-linux-gnu",
-            "COMPOSER_MEMORY_LIMIT": "-1"
-        }
     }
 }

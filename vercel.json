@@ -3,13 +3,12 @@
     "framework": null,
 
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
-        }
+        { "src": "/(.*)",  "dest": "/api/index.php" }
     ],
-    "api/index.php": { "runtime": "vercel-php@0.6.0" },
-
+    "functions": {
+        "api/*.php": {
+          "runtime": "vercel-php@0.6.2"
+        },
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
@@ -26,5 +25,6 @@
         "CACHE_DRIVER": "array",
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
+    }
     }
 }

@@ -13,4 +13,4 @@ Route::post('/register', [ClientController::class, 'register']);
 Route::get('/clients', [ClientController::class, 'getClients']);
 Route::get('/client/{id}', [ClientController::class, 'getClientById']);
 Route::put('/update/{id}', [ClientController::class, 'update']);
-Route::put('/user/{id}', [ClientController::class, 'delete']);
+Route::delete('/client/{id}', [ClientController::class, 'delete']);

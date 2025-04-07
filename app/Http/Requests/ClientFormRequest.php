@@ -16,7 +16,7 @@ class ClientFormRequest extends FormRequest
         return [
             'client' => 'required|string|max:255',
             'date' => 'required|date',
-            'time' => 'required|date_format:H:i:s',
+            'time' => 'required|date_format:H:i',
             'salesperson' => 'required|string|max:255',
             'description' => 'required|string',
             'amount' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',

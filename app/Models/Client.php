@@ -20,10 +20,4 @@ class Client extends Model
         'amount',
         'phone'
     ];
-
-    // protected $casts = [
-    //     'date' => 'date',
-    //     'time' => 'time',
-    //     'amount' => 'decimal:2'
-    // ];
 }

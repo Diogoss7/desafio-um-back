@@ -14,7 +14,7 @@ class ClientFactory extends Factory
         return [
             'client' => $this->faker->name,
             'date' => $this->faker->date('Y-m-d'),
-            'time' => $this->faker->time('H:i:s'),
+            'time' => $this->faker->time('H:i'),
             'salesperson' => $this->faker->name,
             'description' => $this->faker->sentence(10),
             'amount' => bcdiv($this->faker->randomFloat(2, 10, 1000), '1', 2),

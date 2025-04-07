@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         Client::factory()->create([
             'client' => 'testeCliente',
             'date' => now()->subDays(random_int(1, 30))->toDateString(),
-            'time' => now()->toTimeString(),
+            'time' => now()->format('H:i'),
             'salesperson' => 'testeSales',
             'description' => 'testeDescription',
             'amount' => bcdiv(random_int(10, 1000), '1', 2),
